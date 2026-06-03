@@ -1607,7 +1607,6 @@
         height: 100%;
         overflow: hidden;
         clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
-        will-change: clip-path;
         box-shadow: inset -8px 0 0 rgba(255, 255, 255, 0.2);
     }
 
@@ -1746,10 +1745,8 @@
         position: relative;
         padding: 26px 24px 24px;
         border-radius: 22px;
-        background: linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.08));
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.07));
         border: 1px solid rgba(255, 255, 255, 0.16);
-        backdrop-filter: blur(18px);
-        -webkit-backdrop-filter: blur(18px);
         box-shadow:
             0 18px 40px rgba(0, 0, 0, 0.24),
             0 0 0 1px rgba(255, 255, 255, 0.05) inset;
@@ -1969,10 +1966,8 @@
     .support-policy {
         padding: 20px 20px 18px;
         border-radius: 20px;
-        background: rgba(255, 255, 255, 0.08);
+        background: rgba(255, 255, 255, 0.12);
         border: 1px solid rgba(255, 255, 255, 0.14);
-        backdrop-filter: blur(14px);
-        -webkit-backdrop-filter: blur(14px);
         box-shadow: 0 16px 34px rgba(0, 0, 0, 0.18);
     }
 
@@ -2479,32 +2474,12 @@
 
 /* ── Body background ── */
 body {
-  background:
-    radial-gradient(ellipse at 10% 20%, rgba(34,81,255,0.12) 0%, transparent 40%),
-    radial-gradient(ellipse at 90% 80%, rgba(96,176,255,0.10) 0%, transparent 40%),
-    linear-gradient(160deg, #eef2ff 0%, #f5f7ff 40%, #e8efff 70%, #f0f4ff 100%);
-  background-attachment: fixed;
+  background: linear-gradient(160deg, #eef2ff 0%, #f5f7ff 40%, #e8efff 70%, #f0f4ff 100%);
 }
 
 /* ── Decorative floating orbs ── */
 .pg-orb {
-  position: fixed; border-radius: 50%; pointer-events: none; z-index: 0;
-  filter: blur(72px); will-change: transform;
-}
-.pg-orb-1 {
-  width: 520px; height: 520px; top: -140px; left: -140px;
-  background: radial-gradient(circle, rgba(34,81,255,0.18) 0%, transparent 70%);
-  animation: orbDrift 14s ease-in-out infinite alternate;
-}
-.pg-orb-2 {
-  width: 380px; height: 380px; top: 38%; right: -100px;
-  background: radial-gradient(circle, rgba(96,176,255,0.16) 0%, transparent 70%);
-  animation: orbDrift 18s ease-in-out infinite alternate-reverse;
-}
-.pg-orb-3 {
-  width: 300px; height: 300px; bottom: 8%; left: 12%;
-  background: radial-gradient(circle, rgba(167,139,250,0.14) 0%, transparent 70%);
-  animation: orbDrift 12s ease-in-out infinite alternate;
+  display: none;
 }
 @keyframes orbDrift {
   0%   { transform: translate(0, 0) scale(1); }
@@ -2668,45 +2643,26 @@ body {
   100% { background-position: 0% 50%;   }
 }
 .section-heading h2 {
-  background: linear-gradient(90deg, #1540cc, #2251ff, #60b0ff, #2251ff, #1540cc);
-  background-size: 250% auto;
+  background: linear-gradient(90deg, #1540cc, #2251ff, #60b0ff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  animation: gradShift 5s ease infinite;
 }
 .dl-section .section-heading h2 {
-  background: linear-gradient(90deg, #fff, #a8c8ff, #dce9ff, #a8c8ff, #fff);
-  background-size: 250% auto;
+  background: linear-gradient(90deg, #fff, #a8c8ff, #dce9ff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  animation: gradShift 5s ease infinite;
 }
 
-/* ── Shimmer on .section-badge ── */
+/* ── Badge styling ── */
 .section-badge {
   position: relative; overflow: hidden;
 }
-.section-badge::after {
-  content: '';
-  position: absolute; top: 0; left: -120%;
-  width: 80%; height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
-  animation: badgeShimmer 3s ease-in-out infinite;
-}
-@keyframes badgeShimmer {
-  0%   { left: -120%; }
-  60%, 100% { left: 140%; }
-}
 
-/* ── Pulse on WhatsApp / appt buttons ── */
+/* ── WhatsApp / appt buttons ── */
 .dl-appt-btn, .treat-btn.primary, .pws-btn {
-  animation: btnPulse 3s ease-in-out infinite;
-}
-@keyframes btnPulse {
-  0%,100% { box-shadow: 0 0 0 0 rgba(37,211,102,0.35); }
-  50%      { box-shadow: 0 0 0 8px rgba(37,211,102,0); }
+  box-shadow: 0 6px 20px rgba(37,211,102,0.3);
 }
 
 /* ── before/after card glass ── */
@@ -2780,12 +2736,11 @@ body {
 .stats-strip-inner {
   display: flex; align-items: center; justify-content: center;
   gap: 0; flex-wrap: wrap;
-  background: rgba(255,255,255,0.7);
-  backdrop-filter: blur(22px); -webkit-backdrop-filter: blur(22px);
+  background: rgba(255,255,255,0.92);
   border: 1px solid rgba(34,81,255,0.18);
   border-radius: 22px;
   padding: 22px 24px;
-  box-shadow: 0 8px 40px rgba(34,81,255,0.1), inset 0 1px 0 rgba(255,255,255,0.9);
+  box-shadow: 0 8px 40px rgba(34,81,255,0.1);
 }
 .stat-pill {
   display: flex; flex-direction: column; align-items: center;
@@ -2850,9 +2805,7 @@ body {
 .step-icon-wrap::after {
   content: ''; position: absolute; inset: -6px; border-radius: 50%;
   border: 1px dashed rgba(34,81,255,0.18);
-  animation: spinRing 12s linear infinite;
 }
-@keyframes spinRing { 0% { transform: rotate(0); } 100% { transform: rotate(360deg); } }
 .step-card:hover .step-icon-wrap {
   background: rgba(34,81,255,0.18);
   transform: scale(1.1) translateY(-4px);
@@ -2875,11 +2828,6 @@ body {
   width: 10px; height: 10px; border-radius: 50%;
   background: rgba(96,176,255,0.6);
   box-shadow: 0 0 10px rgba(34,81,255,0.5);
-  animation: connDot 2s ease-in-out infinite;
-}
-@keyframes connDot {
-  0%,100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.5); opacity: 0.6; }
 }
 @media (max-width: 800px) {
   .steps-timeline { flex-direction: column; align-items: center; gap: 28px; }
@@ -2906,11 +2854,6 @@ body {
   width: 9px; height: 9px; border-radius: 50%;
   background: #2251ff;
   box-shadow: 0 0 8px rgba(34,81,255,0.7), 0 0 20px rgba(34,81,255,0.3);
-  animation: fxDot 2.5s ease-in-out infinite;
-}
-@keyframes fxDot {
-  0%,100% { box-shadow: 0 0 6px rgba(34,81,255,0.7), 0 0 16px rgba(34,81,255,0.3); }
-  50% { box-shadow: 0 0 14px rgba(34,81,255,0.9), 0 0 34px rgba(34,81,255,0.45); }
 }
 
 /* ═══════════════════════════════════════════════════════
@@ -2928,9 +2871,9 @@ body {
   0%,100% { box-shadow: 0 18px 40px rgba(255,208,96,0.12), 0 0 30px rgba(255,208,96,0.16); }
   50%      { box-shadow: 0 24px 52px rgba(255,208,96,0.22), 0 0 46px rgba(255,208,96,0.3); }
 }
-.pricing-glass-card.economy  { animation: holoGlowEco 4s ease-in-out infinite; }
-.pricing-glass-card.standard { animation: holoGlowStd 4s ease-in-out infinite 1s; }
-.pricing-glass-card.premium  { animation: holoGlowPrm 4s ease-in-out infinite 2s; }
+.pricing-glass-card.economy:hover  { animation: holoGlowEco 2s ease-in-out infinite; }
+.pricing-glass-card.standard:hover { animation: holoGlowStd 2s ease-in-out infinite; }
+.pricing-glass-card.premium:hover  { animation: holoGlowPrm 2s ease-in-out infinite; }
 
 /* ── 3D Tilt utility ── */
 .tilt-card { transform-style: preserve-3d; }
@@ -3311,28 +3254,28 @@ body {
                         <p class="section-subtitle">মাত্র কয়েকটি সহজ ধাপে আপনার হারানো হাসি ফিরে পান — ব্যথামুক্ত, দ্রুত ও দীর্ঘস্থায়ী।</p>
                     </div>
                     <div class="steps-timeline">
-                        <div class="step-card pg-reveal" data-d="1">
+                        <div class="step-card" data-d="1">
                             <div class="step-num-label">STEP 01</div>
                             <div class="step-icon-wrap"><i class="fas fa-comments"></i></div>
                             <h3>পরামর্শ</h3>
                             <p>বিনামূল্যে প্রাথমিক পরামর্শ — দাঁতের অবস্থা মূল্যায়ন ও ব্যক্তিগত চিকিৎসা পরিকল্পনা।</p>
                         </div>
                         <div class="step-connector"></div>
-                        <div class="step-card pg-reveal" data-d="2">
+                        <div class="step-card" data-d="2">
                             <div class="step-num-label">STEP 02</div>
                             <div class="step-icon-wrap"><i class="fas fa-tooth"></i></div>
                             <h3>Preparation</h3>
                             <p>দাঁতের surface পরিষ্কার করে সঠিকভাবে প্রস্তুত করা হয় — painless পদ্ধতিতে।</p>
                         </div>
                         <div class="step-connector"></div>
-                        <div class="step-card pg-reveal" data-d="3">
+                        <div class="step-card" data-d="3">
                             <div class="step-num-label">STEP 03</div>
                             <div class="step-icon-wrap"><i class="fas fa-magic"></i></div>
                             <h3>Application</h3>
                             <p>উন্নত Composite Veneer material দক্ষ হাতে apply করা হয় — natural look নিশ্চিত।</p>
                         </div>
                         <div class="step-connector"></div>
-                        <div class="step-card pg-reveal" data-d="4">
+                        <div class="step-card" data-d="4">
                             <div class="step-num-label">STEP 04</div>
                             <div class="step-icon-wrap"><i class="fas fa-smile-beam"></i></div>
                             <h3>Final Polish</h3>
@@ -3988,75 +3931,70 @@ body {
 
 
 
- document.addEventListener('DOMContentLoaded', function(){
-    const cards = document.querySelectorAll('.card');
-    cards.forEach(card => {
-      const beforeSrc = card.getAttribute('data-before');
-      const afterSrc = card.getAttribute('data-after');
-            card.style.touchAction = 'pan-y';
+ document.addEventListener('DOMContentLoaded', function() {
+    const cards = document.querySelectorAll('.card[data-before]');
 
-      // create before img
-      const beforeImg = document.createElement('img');
+    // Shared state — single set of global listeners instead of N per card
+    let activeCard = null;
+    let activeWrapper = null;
+    let activeHandle = null;
+    let dragging = false;
+
+    function applyPosition(card, wrapper, handle, clientX) {
+      const rect = card.getBoundingClientRect();
+      let x = clientX - rect.left;
+      if (x < 0) x = 0;
+      if (x > rect.width) x = rect.width;
+      const pct = (x / rect.width) * 100;
+      wrapper.style.clipPath = 'polygon(0 0, ' + pct + '% 0, ' + pct + '% 100%, 0 100%)';
+      handle.style.left = pct + '%';
+    }
+
+    window.addEventListener('pointermove', function(e) {
+      if (!dragging || !activeCard) return;
+      applyPosition(activeCard, activeWrapper, activeHandle, e.clientX);
+    }, { passive: true });
+
+    window.addEventListener('pointerup', function() { dragging = false; activeCard = null; });
+    window.addEventListener('pointercancel', function() { dragging = false; activeCard = null; });
+
+    cards.forEach(function(card) {
+      const beforeSrc = card.getAttribute('data-before');
+      const afterSrc  = card.getAttribute('data-after');
+      card.style.touchAction = 'pan-y';
+
+      var beforeImg = document.createElement('img');
       beforeImg.src = beforeSrc;
-      beforeImg.classList.add('before-img');
-      beforeImg.style.width = '100%';
-    beforeImg.style.height = '100%';
-      beforeImg.style.objectFit = 'cover';
-            beforeImg.style.pointerEvents = 'none';
+      beforeImg.className = 'before-img';
+      beforeImg.style.cssText = 'width:100%;height:100%;object-fit:cover;pointer-events:none;position:absolute;inset:0;';
       card.appendChild(beforeImg);
 
-      // after wrapper
-      const afterWrapper = document.createElement('div');
-      afterWrapper.classList.add('after-wrapper');
-      const afterImg = document.createElement('img');
+      var wrapper = document.createElement('div');
+      wrapper.className = 'after-wrapper';
+      var afterImg = document.createElement('img');
       afterImg.src = afterSrc;
-      afterImg.classList.add('after-img');
-    afterImg.style.pointerEvents = 'none';
-      afterWrapper.appendChild(afterImg);
-      card.appendChild(afterWrapper);
+      afterImg.className = 'after-img';
+      afterImg.style.pointerEvents = 'none';
+      wrapper.appendChild(afterImg);
+      card.appendChild(wrapper);
 
-      // handle
-      const handle = document.createElement('div');
-      handle.classList.add('handle');
-    handle.style.touchAction = 'none';
+      var handle = document.createElement('div');
+      handle.className = 'handle';
+      handle.style.touchAction = 'none';
       card.appendChild(handle);
 
-      // interaction
-      let dragging = false;
-            const updatePosition = (clientX) => {
-                const rect = card.getBoundingClientRect();
-                let x = clientX - rect.left;
-                if (x < 0) x = 0;
-                if (x > rect.width) x = rect.width;
-                const percent = (x / rect.width) * 100;
-                        afterWrapper.style.clipPath = `polygon(0 0, ${percent}% 0, ${percent}% 100%, 0 100%)`;
-                handle.style.left = percent + '%';
-            };
+      // Set initial position to 50%
+      applyPosition(card, wrapper, handle, card.getBoundingClientRect().left + card.getBoundingClientRect().width * 0.5);
 
-            updatePosition(card.getBoundingClientRect().left + card.getBoundingClientRect().width * 0.3);
-
-      const startDrag = (e) => {
+      handle.addEventListener('pointerdown', function(e) {
         dragging = true;
-                if (handle.setPointerCapture && e.pointerId !== undefined) {
-                    handle.setPointerCapture(e.pointerId);
-                }
-                updatePosition(e.clientX);
+        activeCard = card;
+        activeWrapper = wrapper;
+        activeHandle = handle;
+        handle.setPointerCapture(e.pointerId);
+        applyPosition(card, wrapper, handle, e.clientX);
         e.preventDefault();
-      };
-      const stopDrag = () => {
-        dragging = false;
-      };
-      const doDrag = (e) => {
-        if (!dragging) return;
-                updatePosition(e.clientX);
-      };
-
-            handle.addEventListener('pointerdown', startDrag);
-
-            window.addEventListener('pointerup', stopDrag);
-            window.addEventListener('pointercancel', stopDrag);
-
-            window.addEventListener('pointermove', doDrag);
+      });
     });
   });
 
